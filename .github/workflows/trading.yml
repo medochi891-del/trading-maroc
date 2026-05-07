@@ -1,0 +1,40 @@
+name: Robot de Trading - Bourse de Casablanca
+
+on:
+  schedule:
+    # Toutes les 5 minutes, lundi-vendredi
+    # UTC 8h25 a 14h35 = Maroc 9h25 a 15h35
+    - cron: "*/5 8-14 * * 1-5"
+
+  workflow_dispatch:
+
+jobs:
+  trading:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout du depot
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installation des dependances
+        run: pip install -r requirements.txt
+
+      - name: Lancement du robot
+        run: python trading_bot.py
+
+      - name: Push des modifications
+        run: |
+          git config user.name  "Robot Trading"
+          git config user.email "bot@trading-maroc.ma"
+          git add -A
+          git diff --staged --quiet || git commit -m "Mise a jour automatique $(date '+%d/%m/%Y %H:%M')"
+          git push || true
