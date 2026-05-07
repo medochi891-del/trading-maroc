@@ -1,0 +1,30 @@
+{
+  "ticker":               "IAM.PA",
+  "ticker_cse":           "IAM",
+  "stock_name":           "Itissalat Al-Maghrib",
+  "sector":               "Telecommunications",
+  "justification":        "Leader du marche telecom au Maroc, action liquide et bien connue, presente dans le cours comme exemple d'entreprise cotee a la Bourse de Casablanca",
+
+  "capital":              100000,
+  "invest_pct":           0.20,
+  "invest_amount":        20000,
+
+  "current_day":          1,
+  "current_trading_date": "",
+  "day_initialized":      false,
+  "archive_saved_today":  false,
+  "attendre_logged":      false,
+  "trade_count":          0,
+  "max_trades":           2,
+
+  "position_open":        false,
+  "buy_price":            0,
+  "quantity":             0,
+  "stop_loss_price":      0,
+  "take_profit_price":    0,
+
+  "total_gain":           0,
+  "nb_operations":        0,
+  "nb_win":               0,
+  "nb_loss":              0
+}
